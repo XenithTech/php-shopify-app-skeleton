@@ -115,7 +115,7 @@ A bare-bones Shopify app written in plain PHP with no framework
   </tr>
 </table>
 
-The main purpose of writing this was the lack of something quick this simple and ready to go. Most tutorials are in Ruby using the `shopify_app` gem. I tried this and had nothing but headaches getting it to work. After having to download multiple pieces of software, plugins, frameworks, etc I had an app that didn't run but still somehow managed to take up around 96MB.
+The main purpose of writing this was the lack of something quick, simple, and ready to go. Most tutorials are in Ruby using the `shopify_app` gem. I tried this and had nothing but headaches getting it to work. After having to download multiple pieces of software, plugins, frameworks, etc I had an app that didn't run but still somehow managed to take up around 96MB.
 
 So I decided to go back to the basics. This app will handle the Oauth handshake sent from Shopify as well as the added security of handling the app page view itself. This was also something I found missing from the tutorials. They handle the handshake to verify the call is coming from Shopify and then redirects to the page/location of where your app is going to run. The issue here is that at this point a hacker can simply go directly to your app location and skip around the handshake. This is asking for trouble.
 
