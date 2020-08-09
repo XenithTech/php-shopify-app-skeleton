@@ -134,14 +134,14 @@ rm LICENSE
 ```
 
 ### Create the app in Shopify
-1. In our partners account (go ahead and create one if you don't have it), under `Apps` click on `Create app` in the top right.
+1. In your partners account (go ahead and create one if you don't have one), under `Apps` click on `Create app` in the top right.
 2. Choose public (this is always a better option, in my opinion, because it has greater security measures and if you decide to make the app for another store, you only need the one instance)
 3. Name your app
-4. Set the `App URL` to point to `oauth.php`. This will be where your app is hosted. (ie: `https://yourapplication.com/oauth.php`)
+4. Set the `App URL` to point to `oauth.php`. This will be where your app is hosted. (ie: `https://your-app-location.com/oauth.php`)
 5. Set the `Allowed redirection URL(s)` to include `postoauth.php` and `index.php`. It should look something like this:
   ```
-  https://yourapplication.com/postoauth.php
-  https://yourapplication.com/index.php
+  https://your-app-location.com/postoauth.php
+  https://your-app-location.com/index.php
   ```
 6. Click `Create app` in the top right
 
@@ -152,7 +152,8 @@ The next screen after clicking `Create app` should display these keys for you. I
 Modify the `$permissions` array to contain all permissions your app will need
 
 ### Connect your database in `config.php`
-Create a database containing two tables with the given structure above. Be sure to create/add a user to this database. The permissions this user needs to have are at minimum `SELECT`, `UPDATE` and `INSERT`
+Create a database containing two tables with the given structure above. Be sure to create/add a user to this database. The permissions this user needs to have are at minimum `SELECT`, `UPDATE` and `INSERT`.
+
 Inside `config.php` do the following:
 
 1. Set `$sn` to your server name. If your database is on the same server this app is hosted it will likely need to be set to `localhost`. Other wise if it is hosted elsewhere it should be set to the IP address of the server hosting the database.
@@ -161,7 +162,7 @@ Inside `config.php` do the following:
 4. Set `$dn` to the name of the database
 
 ### Upload your app to your server
-Of course, the final step here is to upload all of the files for the app to your server. Once that is done your app should be ready to be installed on a development store.
+Of course, the final step here is to upload all of the files for the app to your server. Once that is done your app should be ready to be installed on a development store. This is found under `More actions` when viewing your app inside of Shopify Partners.
 
 ## Build out your app your way
-`index.php` is the home of the actual app. If you are wanting to serve the functionality of your app through some means other than PHP (ie: Node.js, React, etc) You simply need to change the `$redirection_url` to the location of your app. Keep in mind that how ever you host it there is some added security in the `index.php` file that will need to be handled appropriately.
+`index.php` is the home of the actual app. If you are wanting to serve the functionality of your app through some means other than PHP (ie: Node.js, React, etc) You simply need to change the `$redirection_url` to the location of your app as well as set this location as whitelisted under `Allowed redirection URL(s)` inside your app settings in your Shopify Partners account. Keep in mind that how ever you host it there is some added security in the `index.php` file that will need to be handled appropriately.
